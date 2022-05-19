@@ -31,7 +31,7 @@ const config: PlaywrightTestConfig = {
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['playwright-tesults-reporter', {'tesults-target': process.env.TESULTS_TARGET,
-'tesults-build-name': 'test-build-1'}],['html']],
+'tesults-build-name': process.env.RUN_ID }],['html']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
