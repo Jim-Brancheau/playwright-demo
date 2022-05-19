@@ -15,7 +15,7 @@ const TODO_ITEMS = [
 ];
 
 test.describe('New Todo', () => {
-  test.only('should allow me to add todo items', async ({ page }) => {
+  test('should allow me to add todo items', async ({ page }) => {
     // Create 1st todo.
     await page.locator('.new-todo').fill(TODO_ITEMS[0]);
     await page.locator('.new-todo').press('Enter');
