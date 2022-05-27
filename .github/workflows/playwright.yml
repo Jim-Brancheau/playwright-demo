@@ -28,7 +28,7 @@ jobs:
       if: always()
       run: echo "the step outcome is ${{ steps.pw-tests.outcome }}"
     - name: Post JUnit test results to New Relic
-      if: steps.pw-tests.outcome == 'failure' || steps.pw-tests.outcome == 'success'
+      if: always() && (steps.pw-tests.outcome == 'failure' || steps.pw-tests.outcome == 'success')
       uses: newrelic/junit-reporter-action@v0.1.1
       with:
         accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
