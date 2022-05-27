@@ -22,8 +22,10 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
+      id: pw-tests
       run: npx playwright test
     - name: Post JUnit test results to New Relic
+      if: steps.pw-tests.outcome == 'failure' || steps.pwtests.outcome == 'success'
       uses: newrelic/junit-reporter-action@v0.1.1
       with:
         accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
