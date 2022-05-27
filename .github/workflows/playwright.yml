@@ -23,6 +23,12 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+    - name: Post JUnit test results to New Relic
+      uses: newrelic/junit-reporter-action@v0.1
+      with:
+        accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
+        insertApiKey: ${{ secrets.NEW_RELIC_INSERT_API_KEY }}
+        testOutputPath: junit/playwrightResults.xml
     - uses: actions/upload-artifact@v2
       if: always()
       with:
