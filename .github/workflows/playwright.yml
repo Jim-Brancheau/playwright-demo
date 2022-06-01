@@ -18,21 +18,26 @@ jobs:
         node-version: '14.x'
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
     - name: Run Playwright tests
       id: pw-tests
       run: npx playwright test
+
     - name: Debug some stuff i guess
       if: always()
       run: echo "the step outcome is ${{ steps.pw-tests.outcome }}"
+
     - name: Post JUnit test results to New Relic
       if: always() && (steps.pw-tests.outcome == 'failure' || steps.pw-tests.outcome == 'success')
-      uses: newrelic/junit-reporter-action@v0.1.1
+      uses: Jim-Brancheau/junit-reporter-action@451ac24008efa418abe65d5e4665c4e954d7f144
       with:
         accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
         insertApiKey: ${{ secrets.NEW_RELIC_INSERT_API_KEY }}
         testOutputPath: junit/playwrightResults.xml
+
     - uses: actions/upload-artifact@v2
       if: always()
       with:
