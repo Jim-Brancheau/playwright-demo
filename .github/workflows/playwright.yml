@@ -35,7 +35,7 @@ jobs:
       uses: Jim-Brancheau/junit-reporter-action@451ac24008efa418abe65d5e4665c4e954d7f144
       with:
         accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
-        insertApiKey: ${{ secrets.NEW_RELIC_INSERT_API_KEY }}
+        ingestLicenseKey: ${{ secrets.NEW_RELIC_INSERT_API_KEY }}
         testOutputPath: junit/playwrightResults.xml
 
     - uses: actions/upload-artifact@v2
