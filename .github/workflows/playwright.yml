@@ -38,13 +38,6 @@ jobs:
         ingestLicenseKey: ${{ secrets.NEW_RELIC_INSERT_API_KEY }}
         testOutputPath: junit/playwrightResults.xml
 
-    - uses: actions/upload-artifact@v2
-      if: always()
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
-
   otel-export-trace:
     if: always()
     name: OpenTelemetry Export Trace
