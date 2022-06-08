@@ -48,5 +48,5 @@ jobs:
         uses: inception-health/otel-export-trace-action@latest
         with:
           otlpEndpoint: grpc://otlp.nr-data.net:443/
-          otlpHeaders: ${{ secrets.NEW_RELIC_LICENSE_KEY }}
+          otlpHeaders: ${{ secrets.NEW_RELIC_OTLP_HEADERS }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
