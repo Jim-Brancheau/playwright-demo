@@ -37,16 +37,3 @@ jobs:
         accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
         ingestLicenseKey: ${{ secrets.NEW_RELIC_INSERT_API_KEY }}
         testOutputPath: junit/playwrightResults.xml
-
-  otel-export-trace:
-    if: always()
-    name: OpenTelemetry Export Trace
-    runs-on: ubuntu-latest
-    needs: [test] # must run when all jobs are complete
-    steps:
-      - name: Export Workflow Trace
-        uses: inception-health/otel-export-trace-action@latest
-        with:
-          otlpEndpoint: grpc://otlp.nr-data.net:443/
-          otlpHeaders: ${{ secrets.NEW_RELIC_OTLP_HEADERS }}
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
