@@ -37,3 +37,12 @@ jobs:
         accountId: ${{ secrets.NEW_RELIC_ACCOUNT_ID }}
         ingestLicenseKey: ${{ secrets.NEW_RELIC_INSERT_API_KEY }}
         testOutputPath: junit/playwrightResults.xml
+    
+    - uses: inception-health/otel-upload-test-artifact-action@latest
+      if: always()
+      with:
+        jobName: "test"
+        stepName: "Run Playwright tests"
+        path: "junit/playwrightResults.xml"
+        type: "junit"
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
