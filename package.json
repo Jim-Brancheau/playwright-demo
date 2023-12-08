@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.22.1"
+    "@playwright/test": "^1.40.1"
   },
   "dependencies": {
     "playwright-tesults-reporter": "^1.0.0"
